@@ -1,3 +1,18 @@
+
+<?php session_start();
+if (!isset($_SESSION["ID"])) {
+    header('Location: login.php');}
+    include("./config/db.php");
+    $id=$_POST['id'];
+    $sql = "SELECT * FROM user WHERE id=$id ";
+
+    $resultado = mysqli_query($connection, $sql);
+  
+
+        $row = mysqli_fetch_array($resultado);
+
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,32 +25,32 @@
 
 <form action="updateMaestro.php" method="post">
 
-<input type="hidden" name="ID" value="<?php echo($_POST['id']);?>">
+<input type="hidden" name="ID" value="<?php echo $id?>">
 
 
 <label for="">
     usuario
-    <input type="text" name="usuario" id="">
+    <input type="text" name="usuario" value="<?php echo $row["user"] ?>">
 </label>
 
 <label for="">
     nombre
-    <input type="text" name="nombres" id="">
+    <input type="text" name="nombres" id="" value="<?php echo $row["nombre"] ?>">
 </label>
 <label for="">
     apellidos
-    <input type="text" name="apellidos" id="">
+    <input type="text" name="apellidos" id="" value="<?php echo $row["apellidos"] ?>">
 </label>
 <label for="">
     password
-    <input type="text" name="password" id="">
+    <input type="text" name="password" id="" value="<?php echo $row["password"] ?>">
 </label>
 <label for="">
     Matricula
-    <input type="text" name="matricula" id="">
+    <input type="text" name="matricula" id="" value="<?php echo $row["registro"] ?>">
 </label>
 
-<button type="submit">registar</button>
+<button type="submit">Actualizar</button>
 
 <button>Cancela</button>
 </form>
