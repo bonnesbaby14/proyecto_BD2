@@ -17,7 +17,7 @@ if (!isset($_SESSION["ID"])) {
 <nav>
     <ul>
         <li>
-            <a href="./maestrosAdmin.php">Maestros</a>
+            <a href="./maestros/maestros.php">Maestros</a>
         </li>
         <li>
             <a href="#">Alumnos</a>

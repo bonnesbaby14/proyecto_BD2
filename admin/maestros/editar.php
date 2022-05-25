@@ -2,7 +2,7 @@
 <?php session_start();
 if (!isset($_SESSION["ID"])) {
     header('Location: login.php');}
-    include("./config/db.php");
+    include("../../config/db.php"); 
     $id=$_POST['id'];
     $sql = "SELECT * FROM user WHERE id=$id ";
 
@@ -23,7 +23,7 @@ if (!isset($_SESSION["ID"])) {
 </head>
 <body>
 
-<form action="updateMaestro.php" method="post">
+<form action="./update.php" method="post">
 
 <input type="hidden" name="ID" value="<?php echo $id?>">
 

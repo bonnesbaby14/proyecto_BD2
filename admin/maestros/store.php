@@ -1,5 +1,5 @@
 <?php
-  include("./config/db.php");
+include("../../config/db.php"); 
 
 
     // for testing connection
@@ -43,7 +43,7 @@
             else{
                 echo 'Se realizó correctamente el registro.';
                 //Una vez que se insertaron los datos en la tabla "login", cargamos la pagina: "loginvista.html" 
-                header('Location: registrarMaestro.php?Message=Se Registro con exito');
+                header('Location: registrar.php?Message=Se Registro con exito');
             }
         }
         

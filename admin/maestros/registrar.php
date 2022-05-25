@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form action="storeMestro.php" method="post">
+<form action="./store.php" method="post">
 
 
 
