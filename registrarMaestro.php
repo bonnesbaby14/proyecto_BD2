@@ -10,6 +10,8 @@
 
 <form action="storeMestro.php" method="post">
 
+
+
 <label for="">
     usuario
     <input type="text" name="usuario" id="">
