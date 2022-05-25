@@ -30,11 +30,11 @@ if (!$connection) {
         $_SESSION['grado'] = $row['grado'];
 
         if ($row["tipo"] == "maestro") {
-            header('Location: dashboardMaestro.php');
+            header('Location: ./maestros/dashboard.php ');
         } else if ($row["tipo"] == "alumno") {
-            header('Location: dashboardAlumno.php');
+            header('Location: ./alumno/dashboard.php');
         } else if ($row["tipo"] == "admin") {
-            header('Location: dashboardAdmin.php');
+            header('Location: ./admin/dashboard.php');
         }
     } else {
         echo 'Error en la Consulta.' . mysqli_connect_error();
