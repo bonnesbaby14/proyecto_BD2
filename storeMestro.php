@@ -1,8 +1,6 @@
 <?php
+  include("./config/db.php");
 
-    //Realizamos la conexion a la BD: "cursos"
-
-    $connection = mysqli_connect('localhost', 'root', '', 'cursos');
 
     // for testing connection
     if(!$connection) {
@@ -10,41 +8,42 @@
         exit();
     }
     else{
-        
-        //Tomamos las variables que viene del POST del formulario "registrar.html".
-        $iNombre = $_POST['txtNombre'];
-        $iCorreo = $_POST['eCorreo'];
-        $iPassw = MD5($_POST['pContrasenia']); //Se aplica la función MD5 a la contraseña.
+
+        $usuario = $_POST['usuario'];
+        $nombre= $_POST['nombres'];
+        $apellidos= $_POST['apellidos'];
+        $matricula=$_POST['matricula'];
+        $password = MD5($_POST['password']); 
 
         //Verifica si ya existe un correo en la tabla login.
-        $query = "SELECT correo FROM login WHERE correo='$iCorreo'";
+        $query = "SELECT registro FROM user WHERE user='$user'";
         $resultcorreo = mysqli_query($connection, $query);
         //Verificamos cuantas filas (row) trae la consulta 
         $num_rows = mysqli_num_rows($resultcorreo);
         if ($num_rows>=1)
         {
             echo "<script>alert('Este correo ya existe.')</script>";
-            header('Location: formulario.php?Error=Este correo ya existe.&Nombre='.$iNombre.'&Correo='.$iCorreo);
+            header('Location: registrarMaestro.php?Error=Este usuario ya existe.&nombre='.$nombre.'&user='.$user);
         }
         else
         {
 
             //La función: "mysqli_query" ejecuta cualquier instrucción SQL en la BD correspondiente que se encuentre en la conexión especificada.
             //En este caso, la Consulta fue un INSERT-INTO
-            $sql="INSERT INTO login(id, nombre, correo, contrasenia) VALUES(NULL,'$iNombre','$iCorreo', '$iPassw')";
+            $sql="INSERT INTO user(id, user, password, nombre, apellidos,registro,tipo,grado,activo) VALUES(NULL,'$usuario','$password', '$nombre', '$apellidos', '$matricula', 'maestro', NULL,'1')";
             $resultado =mysqli_query($connection, $sql);
       
             
             if (!$resultado)
             {
-                echo 'Error en la Consulta.'.mysqli_connect_error().$iNombre.$iPassw.$iCorreo;
+                echo 'Error en la Consulta.'.mysqli_connect_error().$nombre.$password.$user;
                 //Podemos tambien redireccionarlo de nueva cuenta a la pagina de Formulario de Registro.
                 // header('Location: formulario.html');
             }
             else{
                 echo 'Se realizó correctamente el registro.';
                 //Una vez que se insertaron los datos en la tabla "login", cargamos la pagina: "loginvista.html" 
-                header('Location: login.php?Message=Se Registro con exito');
+                header('Location: registrarMaestro.php?Message=Se Registro con exito');
             }
         }
         

@@ -11,24 +11,28 @@
 <form action="storeMestro.php" method="post">
 
 <label for="">
-    nombre
-    <input type="text" name="nombre" id="">
+    usuario
+    <input type="text" name="usuario" id="">
 </label>
 
+<label for="">
+    nombre
+    <input type="text" name="nombres" id="">
+</label>
 <label for="">
     apellidos
-    <input type="text" name="apellido" id="">
+    <input type="text" name="apellidos" id="">
 </label>
 <label for="">
-    registro
-    <input type="text" name="registro" id="">
+    password
+    <input type="text" name="password" id="">
 </label>
 <label for="">
-    passrod
-    <input type="text" name="passwrod" id="">
+    Matricula
+    <input type="text" name="matricula" id="">
 </label>
 
-<button>REgistra</button>
+<button type="submit">registar</button>
 
 <button>Cancela</button>
 </form>
