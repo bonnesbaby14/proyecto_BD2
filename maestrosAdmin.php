@@ -46,7 +46,7 @@ if (!isset($_SESSION["ID"])) {
             <td>
             <form action='verMaestro.php' method='POST'> <input type='hidden' name='id' value='" . $maestro["id"] . "'> <input type='submit' class='btn btn-danger' value='ver'> </input> </form>
             <form action='editarMaestro.php' method='POST'> <input type='hidden' name='id' value='" . $maestro["id"] . "'> <input type='submit' class='btn btn-danger' value='editar'> </input> </form>
-            <form action='eliminarMaestro.php' method='POST'> <input type='hidden' name='id' value='" . $maestro["id"] . "'> <input type='submit' class='btn btn-danger' value='Eliminar'> </input> </form>
+            <form action='deleteMaestro.php' method='POST'> <input type='hidden' name='id' value='" . $maestro["id"] . "'> <input type='submit' class='btn btn-danger' value='Eliminar'> </input> </form>
 
             </td>
         </tr>
