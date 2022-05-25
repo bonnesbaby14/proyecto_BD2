@@ -1,3 +1,9 @@
+<?php session_start();
+if (!isset($_SESSION["ID"])) {
+    header('Location: login.php');}
+
+
+    include("./config/db.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +17,7 @@
 <nav>
     <ul>
         <li>
-            <a href="#">Maestros</a>
+            <a href="./maestrosAdmin.php">Maestros</a>
         </li>
         <li>
             <a href="#">Alumnos</a>
