@@ -1,0 +1,120 @@
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .row {
+    max-width: 1140px;
+    margin:0 auto;
+  }
+  
+  html {
+    background-color: #ecf0f1;
+    font-family: 'Lato', 'Ariel', san-serif, serif;
+    color: #fff;
+    font-size: 20px;
+    font-weight:300;
+    text-rendering: optimizeLegibility; 
+  }
+  header {
+    background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("http://localhost/web/images/desk.jpg");
+    background-position:center;
+    background-size:cover;
+    height:100vh;
+    width:100%;
+  /*   position:relative; */
+  }
+  .hero-text-box {
+    position:absolute;
+  /*   width:1140px; */
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  h1 {
+    margin-bottom:10px;
+    color:#d1ccc0;
+    font-weight:300px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    word-spacing:2px;
+    font-size:200%;
+    position:relative;
+  }
+  
+  .btn:link,
+  .btn:visited {
+    display:inline-block;
+    margin-right:20px;
+    text-decoration:none;
+    color:#fff;
+    padding:10px 30px;
+    font-weight:300;
+    border-radius:200px;
+  }
+  
+  .btn-a:link,
+  .btn-a:visited {
+    border:1px solid #e74c3c;
+    background-color: #e74c3c;
+  }
+  .btn-b:link,
+  .btn-b:visited {
+    border:1px solid #e74c3c;
+    color:#e74c3c;
+  }
+  
+  .btn-b:hover,
+  .btn-b:active {
+    border:1px solid #e74c3c;
+    color:#fff;
+    background-color:#e74c3c;
+    transition:background-color 1s, border 1s, color 1s;
+  }
+  
+  .btn-a:hover,
+  .btn-a:active {
+    background-color: #ed766c;
+    transition:background-color 1s, border 1s, color 1s;
+  }
+  .logo {
+    height:80px;
+    width:auto;
+    float:left;
+    margin-top:20px;
+  }
+  .nav-bar {
+    float:right;
+    list-style:none;
+    margin-top: 40px;
+    
+    
+  }
+  .nav-bar li {
+    display:inline-block;
+    margin-right: 20px;
+  }
+  
+  .nav-bar li a:link,
+  .nav-bar li a:visited {
+    text-transform: uppercase;
+    text-decoration:none;
+    color:#fff;
+    font-size:90%;
+    transition: 1px solid transparent;
+  }
+  
+  .nav-bar li a:hover,
+  .nav-bar li a:active {
+    border-bottom : 2px solid  #e74c3c;
+    padding: 10px 0;
+    color: #8f2117;
+
+    
+  }
+  
+  
+  
+  
