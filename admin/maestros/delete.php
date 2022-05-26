@@ -9,9 +9,9 @@
     }
     else{
 
-        $id=$_POST['id'];
+        $id=$_GET['id'];
        
-        var_dump($id);
+      
 
         
 
@@ -28,7 +28,7 @@
                 // header('Location: formulario.html');
             }
             else{
-                echo 'Se realizó correctamente el registro.';
+                echo 'Se elimino el registro.';
                 //Una vez que se insertaron los datos en la tabla "login", cargamos la pagina: "loginvista.html" 
                 header('Location: maestros.php?Message=Se Registro con exito');
             }

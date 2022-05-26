@@ -9,7 +9,7 @@
     $connection = mysqli_connect(
       'localhost',
       'root',
-      '1234567890',
+      '',
       'se_ceti'
     ) or die(mysqli_erro($mysqli));
 
@@ -27,7 +27,7 @@ if (!$connection) {
     $activo = "1";
 
     $sql = "INSERT INTO user(`user`, `password`, `nombre`, `apellidos`, `registro`, `tipo`, `activo`) VALUES ('$nombre', '$password', '$nombre', '$apellido','$registro','$tipo', '$activo');";
-    echo $sql;
+    // echo $sql;
 
     $resultado = mysqli_query($connection, $sql);
     echo $resultado;

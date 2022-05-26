@@ -148,7 +148,7 @@ if (!isset($_SESSION["ID"])) {
                                 <td><?php echo $dato['apellidos']; ?></td>
                                 <td><?php echo $dato['registro']; ?></td>
                                 <td><a class="text-success" href="editar.php?codigo=<?php echo $dato['registro']; ?>"><i class="bi bi-pencil-square"></i></a></td>
-                                <td><a onclick="return confirm('Estas seguro de eliminar?');" class="text-danger" href="eliminar.php?codigo=<?php echo $dato['registro']; ?>"><i class="bi bi-trash"></i></a></td>
+                                <td><a onclick="return confirm('Estas seguro de eliminar?');" class="text-danger" href="./delete.php?id=<?php echo $dato['id']; ?>"><i class="bi bi-trash"></i></a></td>
                             </tr>
 
                             <?php 
