@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 25-05-2022 a las 04:55:41
+-- Tiempo de generación: 26-05-2022 a las 05:31:10
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.1.2
 
@@ -47,8 +47,18 @@ CREATE TABLE `asignacion` (
 CREATE TABLE `categorias` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `descripcion` varchar(500) NOT NULL
+  `descripcion` varchar(500) NOT NULL,
+  `activo` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`id`, `nombre`, `descripcion`, `activo`) VALUES
+(1, 'CIENCIAS BASICAS', 'ESTA ES UNA DESCRICION DE CIENCIA BASICA', 1),
+(2, 'ADMINISTRATIVAS', 'ESTA ES LA DESCROCION DE  LAS ADMINISTRATIVAS', 1),
+(3, 'Neva', 'ieasss', 0);
 
 -- --------------------------------------------------------
 
@@ -64,6 +74,13 @@ CREATE TABLE `grupo` (
   `activo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `grupo`
+--
+
+INSERT INTO `grupo` (`id`, `nombre`, `fecha`, `grado`, `activo`) VALUES
+(1, 'dmeossssaaaa', '2022-05-26 03:30:46', 2, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -76,6 +93,15 @@ CREATE TABLE `materia` (
   `idcategoria` int(11) DEFAULT NULL,
   `activo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `materia`
+--
+
+INSERT INTO `materia` (`id`, `nombre`, `idcategoria`, `activo`) VALUES
+(3, 'MATEMATICAS', 2, 1),
+(4, 'DISEÑO INDUSTRIAL editado ', 2, 1),
+(5, 'español', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -91,9 +117,27 @@ CREATE TABLE `user` (
   `apellidos` varchar(200) NOT NULL,
   `registro` varchar(100) NOT NULL,
   `tipo` varchar(100) NOT NULL,
-  `grado` int(11) NOT NULL,
+  `grado` int(11) DEFAULT NULL,
   `activo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `user`
+--
+
+INSERT INTO `user` (`id`, `user`, `password`, `nombre`, `apellidos`, `registro`, `tipo`, `grado`, `activo`) VALUES
+(1, 'uno', 'uno', 'uno', 'uno', 'uno', 'alumno', 1, 1),
+(2, 'dos', 'dos', 'dos', 'dos', 'dos', 'maestro', 1, 1),
+(3, 'tres', 'tres', 'tres', 'tres', 'tres', 'admin', NULL, 0),
+(4, 'nuevo', '827ccb0eea8a706c4c34a16891f84e7b', 'nuevo', '', 'nueva', 'maestro', NULL, 1),
+(5, 'ssss', 'd41d8cd98f00b204e9800998ecf8427e', '', '', '', 'maestro', NULL, 0),
+(6, 'frnac', '6dd1411a66159040b7fff30d0097dbe4', 'franco', 'franco', 'franco', 'maestro', NULL, 0),
+(7, 'demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 'demo', 'demo', 'demo', 'maestro', NULL, 0),
+(8, '2demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 'demo', 'demo', 'demo', 'maestro', NULL, 0),
+(9, 'alumno', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'alumno', 'alumno', 'alumno', 1, 1),
+(10, 'alumno', 'e61e7de603852182385da5e907b4b232', 'hhh', 'hhhh', 'hhh', 'alumno', 1, 1),
+(11, 'admin edtitado', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'admin', 'admin', 'admin', NULL, 1),
+(12, 'sss', 'd41d8cd98f00b204e9800998ecf8427e', 'sss', '', '', 'admin', NULL, 0);
 
 --
 -- Índices para tablas volcadas
@@ -147,25 +191,25 @@ ALTER TABLE `asignacion`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `grupo`
 --
 ALTER TABLE `grupo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `materia`
 --
 ALTER TABLE `materia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restricciones para tablas volcadas
