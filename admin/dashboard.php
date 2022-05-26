@@ -35,7 +35,7 @@ include("./config/db.php"); ?>
                 <a href="./categorias/categorias.php">Categorias</a>
             </li>
             <li>
-                <a href="#">Grupos</a>
+                <a href="./grupos/grupos.php">Grupos</a>
             </li>
             <li>
                 <a href="#">Asignaciones</a>
