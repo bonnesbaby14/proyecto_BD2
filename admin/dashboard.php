@@ -20,7 +20,7 @@ if (!isset($_SESSION["ID"])) {
             <a href="./maestros/maestros.php">Maestros</a>
         </li>
         <li>
-            <a href="#">Alumnos</a>
+            <a href="./alumnos/alumnos.php">Alumnos</a>
         </li>
         <li>
             <a href="#">Admin</a>
@@ -33,6 +33,9 @@ if (!isset($_SESSION["ID"])) {
         </li>
         <li>
             <a href="#">Grupos</a>
+        </li>
+        <li>
+            <a href="#">Asignaciones</a>
         </li>
     </ul>
 </nav>
