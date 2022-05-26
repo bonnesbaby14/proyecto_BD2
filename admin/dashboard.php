@@ -26,7 +26,7 @@ if (!isset($_SESSION["ID"])) {
             <a href="./materias/materias.php">Materia</a>
         </li>
         <li>
-            <a href="#">Admin</a>
+            <a href="./admin/admins.php">Admin</a>
         </li
         <li>
             <a href="#">Categorias</a>
