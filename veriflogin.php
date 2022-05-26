@@ -32,12 +32,12 @@ if (!$connection) {
         if ($row["tipo"] == "maestro") {
             header('Location: ./maestros/dashboard.php ');
         } else if ($row["tipo"] == "alumno") {
-            header('Location: ./alumno/dashboard.php');
+            header('Location: ./alumnos/dashboard.php');
         } else if ($row["tipo"] == "admin") {
             header('Location: ./admin/dashboard.php');
         }
     } else {
         echo 'Error en la Consulta.' . mysqli_connect_error();
-        header('Location: login.php?Message=El correo o contraseña son incorrectas');
+        header('Location: login2.php?Message=El correo o contraseña son incorrectas');
     }
 }
