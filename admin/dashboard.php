@@ -353,7 +353,7 @@ include("../config/db.php");  */ ?>
       </li>
 
       <li>
-        <a href="">
+        <a href="./asignaciones/asignaciones.php">
         <i class='bx bx-git-compare'></i>
           <span class="link_name">Asignaciones</span>
         </a>
