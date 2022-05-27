@@ -11,7 +11,7 @@
 <nav>
     <ul>
         <li>
-            <a href="#">Calificaciones</a>
+            <a href="./calificaciones.php">Calificaciones</a>
         </li>
         <li>
             <a href="#">Materias</a>

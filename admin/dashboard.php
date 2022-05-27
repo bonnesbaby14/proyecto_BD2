@@ -371,7 +371,7 @@ include("../config/db.php");  */ ?>
         <div class="profile_name">Sistema Educativo</div>
         <div class="job">Proyecto</div>
       </div>
-      <i class='bx bx-log-out'style='color:#fff' ></i>
+      <a href="../salir.php"><i class='bx bx-log-out'style='color:#fff' ></i></a>
     </div>
   </li>
 </ul>
