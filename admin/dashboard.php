@@ -355,10 +355,20 @@ include("../config/db.php");  */ ?>
       <li>
         <a href="./asignaciones/asignaciones.php">
         <i class='bx bx-git-compare'></i>
-          <span class="link_name">Asignaciones</span>
+          <span class="link_name">Asignaciones Grupos</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a class="link_name" href="">Asignaciones</a></li>
+          <li><a class="link_name" href="">Asignaciones Grupos</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="./asignacionesAlumnos/asignaciones.php">
+        <i class='bx bx-git-compare'></i>
+          <span class="link_name">Asignaciones Alumnos</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="">Asignaciones Alumnos</a></li>
         </ul>
       </li>
       
