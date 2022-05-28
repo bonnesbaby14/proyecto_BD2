@@ -39,7 +39,7 @@
                 </div>
               
 
-                <form class="p-4" method="POST" action="editarProceso.php">
+                <form class="p-4" method="POST" action="update.php">
                 <?php 
                                 foreach ($persona as $dato) {
                             ?>
@@ -51,12 +51,12 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Apellidos: </label>
-                        <input type="text" class="form-control" name="txtEdad" autofocus required
+                        <input type="text" class="form-control" name="txtApellidos" autofocus required
                         value="<?php echo $dato['apellidos']; ?>">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Signo: </label>
-                        <input type="text" class="form-control" name="txtSigno" autofocus required
+                        <label class="form-label">Registro: </label>
+                        <input type="text" readonly class="form-control" name="txtRegistro" autofocus required
                         value="<?php echo $dato['registro']; ?>">
                     </div>
                     <div class="d-grid">
