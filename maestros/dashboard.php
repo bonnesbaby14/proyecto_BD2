@@ -14,11 +14,9 @@
             <a href="./calificaciones.php">Calificaciones</a>
         </li>
         <li>
-            <a href="#">Materias</a>
+            <a href="./materias.php">Materias</a>
         </li>
-        <li>
-            <a href="#">Grupos</a>
-        </li>
+       
        
     </ul>
 </nav>
