@@ -14,14 +14,15 @@ include("../../config/db.php");
         $apellidos= $_POST['txtApellidos'];
         $matricula=$_POST['txtRegistro'];
         $grado=$_POST['txtGrado'];
+        $id=$_POST['codigo'];
         // var_dump($id);
 
         
 
             //La función: "mysqli_query" ejecuta cualquier instrucción SQL en la BD correspondiente que se encuentre en la conexión especificada.
             //En este caso, la Consulta fue un INSERT-INTO
-            $sql="UPDATE  user SET user='$usuario', nombre='$nombre', apellidos='$apellidos',registro='$matricula', grado='$grado' WHERE registro='$matricula' ";
-            //echo $sql;
+            $sql="UPDATE  user SET user='$usuario', nombre='$nombre', apellidos='$apellidos',registro='$matricula', grado='$grado' WHERE id='$id' ";
+            echo $sql;
             $resultado =mysqli_query($connection, $sql);
           
             echo $resultado;

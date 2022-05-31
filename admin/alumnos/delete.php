@@ -17,7 +17,7 @@
 
             //La función: "mysqli_query" ejecuta cualquier instrucción SQL en la BD correspondiente que se encuentre en la conexión especificada.
             //En este caso, la Consulta fue un INSERT-INTO
-            $sql="UPDATE user SET activo='0' WHERE registro='$id'";
+            $sql="UPDATE user SET activo='0' WHERE id='$id'";
             //echo $sql;
             $resultado =mysqli_query($connection, $sql);
       

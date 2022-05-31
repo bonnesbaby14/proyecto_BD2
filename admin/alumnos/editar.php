@@ -8,7 +8,7 @@
     include("../../config/db.php"); 
     $id=$_GET['codigo'];
     
-    $sql = "SELECT * FROM user WHERE registro= '$id' ";
+    $sql = "SELECT * FROM user WHERE id= '$id' ";
     //echo $sql;
 
     $persona = $connection->query($sql);
@@ -54,7 +54,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Registro: </label>
-                        <input type="text" readonly class="form-control" name="txtRegistro" autofocus required
+                        <input type="text" class="form-control" name="txtRegistro" autofocus required
                         value="<?php echo $dato['registro']; ?>">
                     </div>
                     <div class="mb-3">
@@ -63,7 +63,7 @@
                         value="<?php echo $dato['grado']; ?>">
                     </div>
                     <div class="d-grid">
-                        <input type="hidden" name="codigo" value="<?php echo $dato['registro']; ?>">
+                        <input type="hidden" name="codigo" value="<?php echo $dato['id']; ?>">
                         <input type="submit" class="btn btn-primary" value="Editar">
                     </div>
 
