@@ -23,10 +23,10 @@ if (!$connection) {
     $activo = "1";
 
     $sql = "INSERT INTO user(`user`, `password`, `nombre`, `apellidos`, `registro`, `tipo`, `activo`, `grado` ) VALUES ('$nombre', '$password', '$nombre', '$apellido','$registro','$tipo', '$activo', '$grado');";
-    echo $sql;
+    //echo $sql;
 
     $resultado = mysqli_query($connection, $sql);
-    echo $resultado;
+    //echo $resultado;
 
     if ($resultado === TRUE) {
         header('Location:  alumnos.php?mensaje=registrado');

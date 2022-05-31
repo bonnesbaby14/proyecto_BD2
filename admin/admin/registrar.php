@@ -1,43 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar</title>
-</head>
-<body>
+<?php
+    //print_r($_POST);
+    if( empty($_POST["txtNombre"]) || empty($_POST["txtApellidos"]) || empty($_POST["txtRegistro"])){
+        header('Location: admins.php?mensaje=falta');
+        exit();
+    }
 
-<form action="./store.php" method="post">
-
-
-
-<label for="">
-    usuario
-    <input type="text" name="usuario" id="">
-</label>
-
-<label for="">
-    nombre
-    <input type="text" name="nombres" id="">
-</label>
-<label for="">
-    apellidos
-    <input type="text" name="apellidos" id="">
-</label>
-<label for="">
-    password
-    <input type="text" name="password" id="">
-</label>
-<label for="">
-    Matricula
-    <input type="text" name="matricula" id="">
-</label>
-
-<button type="submit">registar</button>
-
-<button>Cancela</button>
-</form>
     
-</body>
-</html>
+    include("../../config/db.php"); 
+
+if (!$connection) {
+    echo 'Error de conexion a la BD...' . mysqli_connect_error();
+    exit();
+} else {
+
+
+    $nombre = $_POST["txtNombre"];
+    $apellido = $_POST["txtApellidos"];
+    $registro = $_POST["txtRegistro"];
+    $tipo = "admin";
+    $password = "1234";
+    $activo = "1";
+
+    $sql = "INSERT INTO user(`user`, `password`, `nombre`, `apellidos`, `registro`, `tipo`, `activo`) VALUES ('$nombre', '$password', '$nombre', '$apellido','$registro','$tipo', '$activo');";
+    //echo $sql;
+
+    $resultado = mysqli_query($connection, $sql);
+    //echo $resultado;
+
+    if ($resultado === TRUE) {
+        header('Location:  admins.php?mensaje=registrado');
+    } else {
+        header('Location:  admins.php?mensaje=error');
+        exit();
+    }
+}
+?>
