@@ -1,48 +1,34 @@
+<?php
+    //print_r($_POST);
+    if(empty($_POST["txtNombre"]) || empty($_POST["txtGrado"])){
+        header('Location: grupos.php?mensaje=falta');
+        exit();
+    }
 
-<?php session_start();
-if (!isset($_SESSION["ID"])) {
-    header('Location: login.php');}
-
-
-
+    
     include("../../config/db.php"); 
 
- 
-
-    
-    ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar grupo</title>
-</head>
-<body>
+if (!$connection) {
+    echo 'Error de conexion a la BD...' . mysqli_connect_error();
+    exit();
+} else {
 
 
-<form action="./store.php" method="post">
+    $nombre = $_POST["txtNombre"];
+    $grado = $_POST["txtGrado"];
+  ;
 
+    $sql = "INSERT INTO grupo( `nombre`, `grado`, `activo` ) VALUES ('$nombre', '$grado', '1');";
+    //echo $sql;
 
+    $resultado = mysqli_query($connection, $sql);
+    //echo $resultado;
 
-<label for="">
-    nombre del grupo
-    <input type="text" name="nombre" id="">
-</label>
-
-
-<label for="">
-    grado
-    <input type="number" name="grado" id="">
-</label>
-
-
-<button type="submit">registar</button>
-
-<button>Cancela</button>
-</form>
-    
-</body>
-</html>
+    if ($resultado === TRUE) {
+        header('Location:  grupos.php?mensaje=registrado');
+    } else {
+        header('Location:  grupos.php?mensaje=error');
+        exit();
+    }
+}
+?>

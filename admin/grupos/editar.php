@@ -1,48 +1,69 @@
+<?php
+    if(!isset($_GET['codigo'])){
+        echo $_GET['codigo'];
+        header('Location: index.php?mensaje=error');
+        exit();
+    }
 
-<?php session_start();
-if (!isset($_SESSION["ID"])) {
-    header('Location: login.php');}
     include("../../config/db.php"); 
-    $id=$_POST['id'];
-    $sql = "SELECT * FROM grupo WHERE id=$id ";
-
-    $resultado = mysqli_query($connection, $sql);
-    $row = mysqli_fetch_array($resultado);
-
-  
-
-    ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar</title>
-</head>
-<body>
-
-<form action="./update.php" method="post">
-
-<input type="hidden" name="ID" value="<?php echo $id?>">
-
-
-
-<label for="">
-    nombre del grupo
-    <input type="text" name="nombre" value="<?php echo $row['nombre'] ?>" id="">
-</label>
-
-
-<label for="">
-    grado
-    <input type="number" value="<?php echo $row['grado'] ?>" name="grado" id="">
-</label>
-<button type="submit">Actualizar</button>
-
-<button>Cancela</button>
-</form>
+    $id=$_GET['codigo'];
     
+    $sql = "SELECT * FROM grupo WHERE id= '$id' ";
+    //echo $sql;
+
+    $grupo = $connection->query($sql);
+   // echo $persona;
+
+?>
+<!doctype html>
+<html lang="es">
+  <head>
+    <title>CRUD Grupo</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS v5.0.2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- cdn icnonos-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  </head>
+  <body>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    Editar datos:
+                </div>
+              
+
+                <form class="p-4" method="POST" action="update.php">
+                <?php 
+                                foreach ($grupo as $dato) {
+                            ?>
+
+                    <div class="mb-3">
+                        <label class="form-label">Nombre: </label>
+                        <input type="text" class="form-control" name="txtNombre" required 
+                        value="<?php echo  $dato['nombre']; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Grado: </label>
+                        <input type="text"  class="form-control" name="txtGrado" autofocus required
+                        value="<?php echo $dato['grado']; ?>">
+                    </div>
+                    <div class="d-grid">
+                        <input type="hidden" name="codigo" value="<?php echo $dato['id']; ?>">
+                        <input type="submit" class="btn btn-primary" value="Editar">
+                    </div>
+
+                    <?php 
+                                }
+                            ?>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
