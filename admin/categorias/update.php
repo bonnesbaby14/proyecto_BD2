@@ -1,6 +1,10 @@
 <?php
 include("../../config/db.php"); 
 
+if(empty($_POST["txtNombre"]) || empty($_POST["txtDescripcion"]) ){
+    header('Location: categorias.php?mensaje=falta');
+    exit();
+}
 
     // for testing connection
     if(!$connection) {
@@ -9,30 +13,34 @@ include("../../config/db.php");
     }
     else{
 
-        $id=$_POST['ID'];
-        $nombre = $_POST['nombre'];
-        $descripcion = $_POST['descripcion'];
-
+        $nombre= $_POST['txtNombre'];
+        $descripcion= $_POST['txtDescripcion'];
+        $id = $_POST['codigo'];
         // var_dump($id);
+       // echo $id;
+        //echo $categoria;
 
         
 
             //La función: "mysqli_query" ejecuta cualquier instrucción SQL en la BD correspondiente que se encuentre en la conexión especificada.
             //En este caso, la Consulta fue un INSERT-INTO
-            $sql="UPDATE  categorias SET nombre='$nombre', descripcion='$descripcion' WHERE id=$id ";
+            $sql="UPDATE  categorias SET  nombre='$nombre', descripcion='$descripcion',activo='1' WHERE id='$id' ";
+            //echo $sql;
             $resultado =mysqli_query($connection, $sql);
+          
+          //  echo $resultado;
       
             
             if (!$resultado)
             {
                 echo 'Error en la Consulta.'.mysqli_connect_error().$nombre.$password.$user;
                 //Podemos tambien redireccionarlo de nueva cuenta a la pagina de Formulario de Registro.
-                // header('Location: formulario.html');
+                header('Location:  categorias.php?mensaje=falta');
             }
             else{
                 echo 'Se realizó correctamente el registro.';
                 //Una vez que se insertaron los datos en la tabla "login", cargamos la pagina: "loginvista.html" 
-                header('Location: categorias.php?Message=Se Registro con exito');
+                header('Location:  categorias.php?mensaje=editado');
             }
         
         
