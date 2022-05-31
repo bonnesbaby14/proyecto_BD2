@@ -1,8 +1,9 @@
-<?php session_start();
+<?php 
+/*session_start();
 if (!isset($_SESSION["ID"])) {
     header('Location: login.php');}
 
-
+*/
 
     include("../../config/db.php"); 
     
@@ -15,6 +16,9 @@ if (!isset($_SESSION["ID"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- cdn icnonos-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <title>Materias</title>
 </head>
 
@@ -26,42 +30,171 @@ if (!isset($_SESSION["ID"])) {
     $query = "SELECT m.*, c.nombre as categoria FROM materia as m inner join categorias as c on c.id=m.idcategoria  WHERE  m.activo='1'";
     $materias = mysqli_query($connection, $query);
 
+    $query2 = "SELECT id, nombre from categorias where activo='1' ";
+    $categorias = mysqli_query($connection, $query2);
+
     ?>
+
+<div class="container-fluid  text-light bg-dark">
+    <div>
+
+    <td>
+
+<a href="../dashboard.php" ><input type="button" class="text-light bg-dark" value="Página anterior"></a>
+    </div>
+    <div class = "row">
+            <div class="col-md">
+                <header class="py-3">
+                    <h3>Registro de materias</h3>
+                </header>
+
+            </div>
+    </div> 
+</td>
+
+
+</div>
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+            <!-- inicio alerta -->
+            <?php 
+                if(isset($_GET['mensaje']) and $_GET['mensaje'] == 'falta'){
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Error!</strong> Rellena todos los campos.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php 
+                }
+            ?>
+
+
+            <?php 
+                if(isset($_GET['mensaje']) and $_GET['mensaje'] == 'registrado'){
+            ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Registrado!</strong> Se agregaron los datos.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php 
+                }
+            ?>   
+            
+            
+
+            <?php 
+                if(isset($_GET['mensaje']) and $_GET['mensaje'] == 'error'){
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Error!</strong> Vuelve a intentar.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php 
+                }
+            ?>   
+
+
+
+            <?php 
+                if(isset($_GET['mensaje']) and $_GET['mensaje'] == 'editado'){
+            ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Cambiado!</strong> Los datos fueron actualizados.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php 
+                }
+            ?> 
+
+
+            <?php 
+                if(isset($_GET['mensaje']) and $_GET['mensaje'] == 'eliminado'){
+            ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Eliminado!</strong> Los datos fueron borrados.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php 
+                }
+            ?> 
+
+            <!-- fin alerta -->
+            <div class="card">
+                <div class="card-header">
+                    Lista de materias
+                </div>
+                <div class="p-4">
+                    <table class="table align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col" colspan="2">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        <?php 
+                                foreach ($materias as $dato) {
+                            ?>
+
+                            <tr>
+                                <td><?php echo $dato['nombre']; ?></td>
+                                <td><?php echo $dato['categoria']; ?></td>
+                                <td><a class="text-success" href="editar.php?codigo=<?php echo $dato['id']; ?>"><i class="bi bi-pencil-square"></i></a></td>
+                                <td><a class="text-danger" href="./delete.php?id=<?php echo $dato['id']; ?>"><i class="bi bi-trash"></i></a></td>
+                            </tr>
+
+                            <?php 
+                                }
+                            ?>
+
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    Ingresar datos
+                </div>
+                <form class="p-4" method="POST" action="registrar.php">
+                    <div class="mb-3">
+                        <label class="form-label">Nombre: </label>
+                        <input type="text" class="form-control" name="txtNombre" autofocus required>
+                    </div>
+                    <div class="mb-3">
+                    <select name="txtCategoria" class="form-select form-select-md" aria-label=".form-select-sm example">
+                        <option selected>Selecciona categoria</option>
+                        <?php 
+                                foreach ($categorias as $dato) {
+                            ?>
+                        <option  value= <?php echo $dato['id']; ?>><?php echo $dato['nombre']; ?></option>
+                        <?php 
+                                }
+                            ?>
+                    </select>
+                    </div>
+                    <div class="d-grid">
+                        <input type="hidden" name="oculto" value="1">
+                        <input type="submit" class="btn btn-primary" value="Registrar">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
     
-    <a href="registrar.php">Nuevo</a>
-
-    <table>
-
-        <tr>
-            <th>nombre</th>
-            <th>categoria</th>
-            
-            <th>activon</th>
-           
-
-        </tr>
-
-
-<?php 
-        foreach ($materias as $materia) {
-        echo "<tr>
-            <td> " . $materia['nombre'] . " </td>
-            <td> " . $materia['categoria'] . " </td>
-       
-            
-            <td>
-            <form action='#' method='POST'> <input type='hidden' name='id' value='" . $materia["id"] . "'> <input type='submit' class='btn btn-danger' value='ver'> </input> </form>
-            <form action='./editar.php' method='POST'> <input type='hidden' name='id' value='" . $materia["id"] . "'> <input type='submit' class='btn btn-danger' value='editar'> </input> </form>
-            <form action='./delete.php' method='POST'> <input type='hidden' name='id' value='" . $materia["id"] . "'> <input type='submit' class='btn btn-danger' value='Eliminar'> </input> </form>
-
-            </td>
-        </tr>
-        ";
-        }
-
-?>
-
-    </table>
+  
 
 
 

@@ -1,63 +1,34 @@
+<?php
+    //print_r($_POST);
+    if(empty($_POST["txtNombre"]) || empty($_POST["txtCategoria"]) || ($_POST["txtCategoria"]) == "Selecciona categoria" ){
+        header('Location: materias.php?mensaje=falta');
+        exit();
+    }
 
-<?php session_start();
-if (!isset($_SESSION["ID"])) {
-    header('Location: login.php');}
-
-
-
+    
     include("../../config/db.php"); 
 
-    $query = "SELECT * FROM categorias ";
-$categorias = mysqli_query($connection, $query);
-
-    
-    ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Materias</title>
-</head>
-<body>
+if (!$connection) {
+    echo 'Error de conexion a la BD...' . mysqli_connect_error();
+    exit();
+} else {
 
 
-<form action="./store.php" method="post">
+    $nombre = $_POST["txtNombre"];
+    $categoria = $_POST["txtCategoria"];
+    //echo $categoria;
 
+    $sql = "INSERT INTO materia(`nombre`, `idcategoria`, `activo`) VALUES ('$nombre', '$categoria', '1');";
+    // echo $sql;
 
+    $resultado = mysqli_query($connection, $sql);
+    //echo $resultado;
 
-<label for="">
-    nombre de la materia
-    <input type="text" name="nombre" id="">
-</label>
-
-<label for="">
-    Categoria
-    <select name="categoria" id="">
-
-    <?php
-
-foreach($categorias as $categoria){
-
-    echo "<option value='".$categoria['id']."'  > ".$categoria['nombre']." </option>";
-
-
+    if ($resultado === TRUE) {
+        header('Location:  materias.php?mensaje=registrado');
+    } else {
+        header('Location:  materias.php?mensaje=error');
+        exit();
+    } 
 }
-
 ?>
-    
-
-
-    </select>
-</label>
-
-
-<button type="submit">registar</button>
-
-<button>Cancela</button>
-</form>
-    
-</body>
-</html>
