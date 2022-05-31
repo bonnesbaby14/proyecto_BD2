@@ -6,12 +6,7 @@
     }
 
     
-    $connection = mysqli_connect(
-      'localhost',
-      'root',
-      '',
-      'se_ceti'
-    ) or die(mysqli_erro($mysqli));
+    include("../../config/db.php"); 
 
 if (!$connection) {
     echo 'Error de conexion a la BD...' . mysqli_connect_error();
