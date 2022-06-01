@@ -1,7 +1,7 @@
 <?php
     //print_r($_POST);
     if(empty($_POST["oculto"]) || empty($_POST["txtNombre"]) || empty($_POST["txtApellidos"]) || empty($_POST["txtGrado"]) || empty($_POST["txtRegistro"])){
-        header('Location: maestros.php?mensaje=falta');
+        header('Location: alumnos.php?mensaje=falta');
         exit();
     }
 
