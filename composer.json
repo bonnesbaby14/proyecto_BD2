@@ -1,0 +1,15 @@
+{
+    "name": "bonnesbaby14/proyecto_bd2",
+    "autoload": {
+        "psr-4": {
+            "Bonnesbaby14\\ProyectoBd2\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "bonnesbaby14",
+            "email": "bonnesbaby14@gmail.com"
+        }
+    ],
+    "require": {}
+}
