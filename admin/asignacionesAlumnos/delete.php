@@ -9,9 +9,9 @@
     }
     else{
 
-        $id=$_POST['id'];
+        $id=$_GET['id'];
        
-        var_dump($id);
+       // var_dump($id);
 
         
 
@@ -24,13 +24,14 @@
             if (!$resultado)
             {
                 echo 'Error en la Consulta.'.mysqli_connect_error().$nombre.$password.$user;
+                header('Location:  asignaciones.php?');
                 //Podemos tambien redireccionarlo de nueva cuenta a la pagina de Formulario de Registro.
                 // header('Location: formulario.html');
             }
             else{
                 echo 'Se realizó correctamente el registro.';
                 //Una vez que se insertaron los datos en la tabla "login", cargamos la pagina: "loginvista.html" 
-                header('Location: asignaciones.php?Message=Se Registro con exito');
+                header('Location:  asignaciones.php?mensaje=eliminado');
             }
         
         
