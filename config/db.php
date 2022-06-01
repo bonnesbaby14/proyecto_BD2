@@ -6,7 +6,7 @@ $connection = mysqli_connect(
   'containers-us-west-36.railway.app',
   'root',
   '62gIGinYMUKWXoRUMRQr',
-  'se_ceti',
+  'railway',
   5441
 ) or die(mysqli_erro($mysqli));
 
