@@ -18,6 +18,199 @@ include("../config/db.php");  */ ?>
     <title>Dashboard</title>
 
     <style>
+
+*{
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+h1{
+  font-size: 2.5rem;
+  font-family: 'Montserrat';
+  font-weight: normal;
+  color: #444;
+  text-align: center;
+  margin: 0rem 0;
+}
+
+.wrapper{
+  width: 90%;
+  margin: 0 auto;
+  max-width: 80rem;
+}
+
+.cols{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.col{
+  width: calc(25% - 2rem);
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.container{
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+	-webkit-perspective: 1000px;
+	        perspective: 1000px;
+}
+
+.front,
+.back{
+  background-size: cover;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.25);
+  border-radius: 10px;
+	background-position: center;
+	-webkit-transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	-o-transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1), -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	-webkit-backface-visibility: hidden;
+	        backface-visibility: hidden;
+	text-align: center;
+	min-height: 280px;
+	height: auto;
+	border-radius: 10px;
+	color: #fff;
+	font-size: 1.5rem;
+}
+
+.back{
+  background: #cedce7;
+  background: -webkit-linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
+  background: -o-linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
+  background: linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
+}
+
+.front:after{
+	position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    content: '';
+    display: block;
+    opacity: .6;
+    background-color: #000;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    border-radius: 10px;
+}
+.container:hover .front,
+.container:hover .back{
+    -webkit-transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    -o-transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1), -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.back{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.inner{
+    -webkit-transform: translateY(-50%) translateZ(60px) scale(0.94);
+            transform: translateY(-50%) translateZ(60px) scale(0.94);
+    top: 50%;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    outline: 1px solid transparent;
+    -webkit-perspective: inherit;
+            perspective: inherit;
+    z-index: 2;
+}
+
+.container .back{
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+}
+
+.container .front{
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+}
+
+.container:hover .back{
+  -webkit-transform: rotateY(0deg);
+          transform: rotateY(0deg);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.container:hover .front{
+  -webkit-transform: rotateY(-180deg);
+          transform: rotateY(-180deg);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.front .inner p{
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.front .inner p:after{
+  content: '';
+  width: 4rem;
+  height: 2px;
+  position: absolute;
+  background: #C6D4DF;
+  display: block;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: -.75rem;
+}
+
+.front .inner span{
+  color: rgba(255,255,255,0.7);
+  font-family: 'Montserrat';
+  font-weight: 300;
+}
+
+@media screen and (max-width: 64rem){
+  .col{
+    width: calc(33.333333% - 2rem);
+  }
+}
+
+@media screen and (max-width: 48rem){
+  .col{
+    width: calc(50% - 2rem);
+  }
+}
+
+@media screen and (max-width: 32rem){
+  .col{
+    width: 100%;
+    margin: 0 0 2rem 0;
+  }
+}
         /* Google Fonts Import Link */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 *{
@@ -26,6 +219,19 @@ include("../config/db.php");  */ ?>
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+
+.home-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  margin-bottom: 40px;
+}
+
+.home-cards img {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
 .sidebar{
   position: fixed;
   top: 0;
@@ -230,7 +436,7 @@ include("../config/db.php");  */ ?>
 }
 .home-section{
   position: relative;
-  background: #E4E9F7;
+  background: #FFFFFF;
   height: 100vh;
   left: 260px;
   width: calc(100% - 260px);
@@ -278,6 +484,24 @@ include("../config/db.php");  */ ?>
     left: 0;
   }
 }
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+} 
+
+main {
+  flex: 1 0 auto;
+}
+
+h1.title,
+.footer-copyright a {
+  font-family: 'Architects Daughter', cursive;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
 
 
     </style>
@@ -389,8 +613,151 @@ include("../config/db.php");  */ ?>
   <section class="home-section">
     <div class="home-content">
       <i class='bx bx-menu' ></i>
-      <span class="text">Menú Administrador</span>
     </div>
+
+    <div class="wrapper">
+  <h1>Menú de administrador</h1>
+  <div class="cols">
+    <a href="./maestros/maestros.php">
+			<div class="col" ontouchstart="this.classList.toggle('hover');">
+				<div class="container">
+					<div class="front" style="background-image: url(https://www.ceac.es/sites/default/files/2021-10/claves-para-ser-un-maestro-motivador_0.jpg)">
+						<div class="inner">
+							<p>Maestros</p>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+						  <p>Se puede ver, crear, editar y eliminar profesores</p>
+						</div>
+					</div>
+				</div>
+    </a>
+	</div>
+
+			<div class="col" ontouchstart="this.classList.toggle('hover');">
+      <a href="./alumnos/alumnos.php">
+				<div class="container">
+					<div class="front" style="background-image: url(https://www.compartirpalabramaestra.org/sites/default/files/seis-tips-para-ser-un-excelente-estudiante.jpg)">
+						<div class="inner">
+							<p>Estudiantes</p>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+							<p>Se puede ver, crear, editar y eliminar alumnos</p>
+						</div>
+					</div>
+				</div>
+        </a>
+			</div>
+
+			<div class="col" ontouchstart="this.classList.toggle('hover');">
+      <a href="./materias/materias.php">
+				<div class="container">
+					<div class="front" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Books_HD_%288314929977%29.jpg/800px-Books_HD_%288314929977%29.jpg)">
+						<div class="inner">
+							<p>Materias</p>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+							<p>Se puede ver, crear, editar y eliminar materias.</p>
+						</div>
+					</div>
+				</div>
+        </a>
+			</div>
+
+			<div class="col" ontouchstart="this.classList.toggle('hover');">
+      <a href="./admin/admins.php">
+				<div class="container">
+					<div class="front" style="background-image: url(https://uploads-ssl.webflow.com/5c0923437b3820198bab7be0/5fb428964311ac28bde416d0_administrador-de-condominios.jpg)">
+						<div class="inner">
+							<p>Admin</p>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+							<p>Se puede ver, crear, editar y eliminar administradores.</p>
+						</div>
+					</div>
+				</div>
+        </a>
+			</div>
+
+			<div class="col" ontouchstart="this.classList.toggle('hover');">
+      <a href="./categorias/categorias.php">
+				<div class="container">
+					<div class="front" style="background-image: url(https://concepto.de/wp-content/uploads/2012/03/ciencia.jpeg)">
+						<div class="inner">
+							<p>Categorías</p>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+							<p>Se puede ver, crear, editar y eliminar categorías</p>
+						</div>
+					</div>
+				</div>
+      </a>
+			</div>
+
+			<div class="col" ontouchstart="this.classList.toggle('hover');">
+      <a href="./grupos/grupos.php">
+				<div class="container">
+					<div class="front" style="background-image: url(https://profesor-particular.es/inter-content/uploads/2019/11/jvenes.png)">
+						<div class="inner">
+							<p>Grupos</p>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+							<p>Se puede ver, crear, editar y eliminar grupos.</p>
+						</div>
+					</div>
+				</div>
+      </a>
+			</div>
+
+			<div class="col" ontouchstart="this.classList.toggle('hover');">
+      <a href="./asignaciones/asignaciones.php">
+				<div class="container">
+					<div class="front" style="background-image: url(https://mirincondeaprendizaje.com/wp-content/uploads/2019/08/classroom-2093744_960_720-1.jpg)">
+						<div class="inner">
+							<p>Asignaciones grupos</p>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+							<p>Se puede ver, crear, editar y eliminar asignaciones de grupos</p>
+						</div>
+					</div>
+				</div>
+      </a>
+			</div>
+
+			<div class="col" ontouchstart="this.classList.toggle('hover');">
+      <a href="./asignacionesAlumnos/asignaciones.php">
+				<div class="container">
+					<div class="front" style="background-image: url(https://www.educalinkapp.com/blog/wp-content/uploads/2021/07/reglas-del-salon-de-clase-0-138539227_m.jpg)">
+						<div class="inner">
+							<p>Asignaciones alumnos</p>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+							<p>Se puede ver, crear, editar y eliminar asignaciones de alumnos.</p>
+						</div>
+					</div>
+				</div>
+      </a>
+			</div>
+		</div>
+ </div>
+
+    
+
   </section>
   
   <script>
