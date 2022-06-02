@@ -168,7 +168,7 @@ if (!isset($_SESSION["ID"])) {
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Grado: </label>
-                        <input type="text" class="form-control" name="txtGrado" autofocus required>
+                        <input type="number" min="1" class="form-control" name="txtGrado" autofocus required>
                     </div>
                     <div class="d-grid">
                         <input type="hidden" name="oculto" value="1">

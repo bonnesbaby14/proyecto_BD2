@@ -59,7 +59,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Grado: </label>
-                        <input type="text"  class="form-control" name="txtGrado" autofocus required
+                        <input type="number" min="1"  class="form-control" name="txtGrado" autofocus required
                         value="<?php echo $dato['grado']; ?>">
                     </div>
                     <div class="d-grid">
