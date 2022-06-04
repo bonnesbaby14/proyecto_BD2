@@ -57,7 +57,7 @@ $tickets = mysqli_query($connection, $query);
     ";
     if($_SESSION["tipo"]=="admin"){
         $info=$info."<td>
-        <a href='./atendido.php/".$ticket['id']."' >Atendido</a>
+        <a href='./atendido.php?id=".$ticket['id']."' >Atendido</a>
         </td>";
         }
         echo $info;
