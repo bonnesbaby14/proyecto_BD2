@@ -1,112 +1,34 @@
-<?php session_start();
-if (!isset($_SESSION["ID"])) {
-    header('Location: login.php');
+<?php
+    //print_r($_POST);
+    if( ($_POST["txtGrupo"]) == "Selecciona grupo"  || ($_POST["txtMateria"]) == "Selecciona materia"  || ($_POST["txtMaestro"]) == "Selecciona maestro" ){
+        header('Location: asignaciones.php?mensaje=falta');
+        exit();
+    }
+
+    
+    include("../../config/db.php"); 
+
+if (!$connection) {
+    echo 'Error de conexion a la BD...' . mysqli_connect_error();
+    exit();
+} else {
+
+
+    $grupo = $_POST["txtGrupo"];
+    $materia = $_POST["txtMateria"];
+    $maestro = $_POST["txtMaestro"];
+    //echo $categoria;
+
+    $sql="INSERT INTO asignacion(id, idgrupo, iduser ,primer_parcial,segundo_parcial,tercer_parcial,idmateria,activo) VALUES(NULL,'$grupo','$maestro',NULL,NULL,NULL,'$materia','1')";
+    $resultado =mysqli_query($connection, $sql);
+
+    //echo $resultado;
+
+    if ($resultado === TRUE) {
+        header('Location:  asignaciones.php?mensaje=registrado');
+    } else {
+        header('Location:  asignaciones.php?mensaje=error');
+        exit();
+    } 
 }
-
-
-
-include("../../config/db.php");
-
-$query = "SELECT * FROM user where activo='1' and tipo='maestro' ";
-$maestros = mysqli_query($connection, $query);
-
-$query = "SELECT * FROM materia where activo='1' ";
-$materias = mysqli_query($connection, $query);
-
-$query = "SELECT * FROM grupo where activo='1' ";
-$grupos = mysqli_query($connection, $query);
-
-
-
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Materias</title>
-</head>
-
-<body>
-
-
-    <form action="./store.php" method="post">
-
-
-
-
-
-        <label for="">
-            Maestro
-            <select name="maestro" id="">
-
-                <?php
-
-                foreach ($maestros as $maestro) {
-
-                    echo "<option value='" . $maestro['id'] . "'  > " . $maestro['nombre'] . " " . $maestro['apellidos'] . " </option>";
-                }
-
-                ?>
-
-
-
-            </select>
-
-
-
-
-
-            </select>
-
-        </label>
-
-        <label for="">
-            Grupos
-            <select name="grupo" id="">
-
-                <?php
-
-                foreach ($grupos as $grupo) {
-
-                    echo "<option value='" . $grupo['id'] . "'  > " . $grupo['nombre'] . " </option>";
-                }
-
-                ?>
-
-
-
-            </select>
-        </label>
-
-        <label for="">
-            Materia
-            <select name="materia" id="">
-
-                <?php
-
-                foreach ($materias as $materia) {
-
-                    echo "<option value='" . $materia['id'] . "'  > " . $materia['nombre'] . " </option>";
-                }
-
-                ?>
-
-
-
-            </select>
-        </label>
-
-
-
-        <button type="submit">registar</button>
-
-        <button>Cancela</button>
-    </form>
-
-</body>
-
-</html>
