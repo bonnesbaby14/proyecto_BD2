@@ -18,9 +18,10 @@ if (!isset($_SESSION["ID"])) {
 </head>
 <body>
 
+<a href="./registrar.php">Registar</a>
 <?php
 
-$query = "select t.texto, t.urgencia,t.atendido, u.nombre, u.apellidos  from ticket_soporte as t inner join user as u on u.id=t.idusuario ";
+$query = "select t.id,t.texto, t.urgencia,t.atendido, u.nombre, u.apellidos  from ticket_soporte as t inner join user as u on u.id=t.idusuario ";
 if($_SESSION["tipo"]!="admin"){
 $query=$query." where u.id=".$_SESSION["ID"]."";
 }
@@ -44,16 +45,22 @@ $tickets = mysqli_query($connection, $query);
     <tbody>
 <?php
     foreach ($tickets as $ticket) {
-        echo "<tr>
-            <td> " . $ticket['texto'] . " </td>
-            <td> " . $ticket['urgencia'] . " </td>
-            <td> " . $ticket['atendido'] . " </td>
-            <td> " . $ticket['nombre']." ".$ticket['apellidos'] . " </td>
+        $info= "<tr>
+        <td> " . $ticket['texto'] . " </td>
+        <td> " . $ticket['urgencia'] . " </td>
+        <td> " . $ticket['atendido'] . " </td>
+        <td> " . $ticket['nombre']." ".$ticket['apellidos'] . " </td>
+   
+        
        
-            
-           
-        </tr>
-        ";
+    </tr>
+    ";
+    if($_SESSION["tipo"]=="admin"){
+        $info=$info."<td>
+        <a href='./atendido.php/".$ticket['id']."' >Atendido</a>
+        </td>";
+        }
+        echo $info;
         }
     ?>
         </tbody>
