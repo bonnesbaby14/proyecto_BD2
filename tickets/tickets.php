@@ -48,7 +48,7 @@ $tickets = mysqli_query($connection, $query);
             <td> " . $ticket['texto'] . " </td>
             <td> " . $ticket['urgencia'] . " </td>
             <td> " . $ticket['atendido'] . " </td>
-            <td> " . $ticket['nombres']." ".$ticket['apellidos'] . " </td>
+            <td> " . $ticket['nombre']." ".$ticket['apellidos'] . " </td>
        
             
            
