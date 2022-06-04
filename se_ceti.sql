@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 28-05-2022 a las 22:56:16
+-- Tiempo de generación: 04-06-2022 a las 19:09:34
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.1.2
 
@@ -122,6 +122,28 @@ INSERT INTO `materia` (`id`, `nombre`, `idcategoria`, `activo`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `ticket_soporte`
+--
+
+CREATE TABLE `ticket_soporte` (
+  `id` int(11) NOT NULL,
+  `texto` varchar(500) DEFAULT NULL,
+  `urgencia` int(11) DEFAULT NULL,
+  `atendido` int(11) DEFAULT NULL,
+  `idusuario` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `ticket_soporte`
+--
+
+INSERT INTO `ticket_soporte` (`id`, `texto`, `urgencia`, `atendido`, `idusuario`) VALUES
+(1, 'No sirve las calficiacones', 10, 0, 2),
+(2, 'test', 3, 1, 2);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `user`
 --
 
@@ -191,6 +213,13 @@ ALTER TABLE `materia`
   ADD KEY `categoria` (`idcategoria`);
 
 --
+-- Indices de la tabla `ticket_soporte`
+--
+ALTER TABLE `ticket_soporte`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idusuario` (`idusuario`);
+
+--
 -- Indices de la tabla `user`
 --
 ALTER TABLE `user`
@@ -225,6 +254,12 @@ ALTER TABLE `materia`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT de la tabla `ticket_soporte`
+--
+ALTER TABLE `ticket_soporte`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
@@ -247,6 +282,12 @@ ALTER TABLE `asignacion`
 --
 ALTER TABLE `materia`
   ADD CONSTRAINT `categoria` FOREIGN KEY (`idcategoria`) REFERENCES `categorias` (`id`) ON DELETE SET NULL ON UPDATE SET NULL;
+
+--
+-- Filtros para la tabla `ticket_soporte`
+--
+ALTER TABLE `ticket_soporte`
+  ADD CONSTRAINT `idusuario` FOREIGN KEY (`idusuario`) REFERENCES `user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
