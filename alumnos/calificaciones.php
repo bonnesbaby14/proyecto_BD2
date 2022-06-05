@@ -1,9 +1,10 @@
-<?php session_start();
+<?php 
+/*session_start();
 if (!isset($_SESSION["ID"])) {
     header('Location: login.php');}
 
 
-
+*/
     include("../config/db.php"); 
     
     ?>
@@ -13,6 +14,9 @@ if (!isset($_SESSION["ID"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- cdn icnonos-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <title>Calificaciones</title>
 </head>
 <body>
@@ -26,40 +30,69 @@ $calificaciones = mysqli_query($connection, $query);
 
 ?>
 
-<h1>Calificaciones</h1>
+<div class="container-fluid  text-light bg-dark">
+    <div>
 
+    <td>
 
+<a href="./dashboard.php" ><input type="button" class="text-light bg-dark" value="Menú"></a>
+    </div>
+    <div class = "row">
+            <div class="col-md">
+                <header class="py-3">
+                    <h3>Calificaciones</h3>
+                </header>
 
-<table>
-    <thead>
-        <tr>
-            <td>Materia</td>
-            <td>Grupo</td>
-            <td>Primer Parcial</td>
-            <td>Segundo Parcial</td>
-            <td>Tercer Parcial</td>
-            <td>Promedio</td>
-        </tr>
+            </div>
+    </div> 
+</td>
+</div>
 
-    </thead>
-    <tbody>
-    <?php
-    foreach ($calificaciones as $calificacion) {
-        echo "<tr>
-            <td> " . $calificacion['nombre'] . " </td>
-            <td> " . $calificacion['grupo'] . " </td>
-            <td> " . $calificacion['primer_parcial'] . " </td>
-            <td> " . $calificacion['segundo_parcial'] . " </td>
-            <td> " . $calificacion['tercer_parcial'] . " </td>
-            <td> " . $calificacion['promedio'] . " </td>
-       
-            
-           
-        </tr>
-        ";
-        }
-    ?>
-    </tbody>
-</table>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-header">
+                    Calificaciones del alumno
+                </div>
+                <div class="p-4">
+                    <table class="table align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col">Materia</th>
+                                <th scope="col">Grupo</th>
+                                <th scope="col">Primer Parcial</th>
+                                <th scope="col">Segundo Parcial</th>
+                                <th scope="col">Tercer Parcial</th>
+                                <th scope="col">Promedio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        <?php 
+                                foreach ($calificaciones as $dato) {
+                            ?>
+
+                            <tr>
+                                <td><?php echo $dato['nombre']; ?></td>
+                                <td><?php echo $dato['grupo']; ?></td>
+                                <td><?php echo $dato['primer_parcial']; ?></td>
+                                <td><?php echo $dato['segundo_parcial']; ?></td>
+                                <td><?php echo $dato['tercer_parcial']; ?></td>
+                                <td><?php echo $dato['promedio']; ?></td>
+                            </tr>
+
+                            <?php 
+                                }
+                            ?>
+
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+        </div> 
+    </div> 
+</div>     
 </body>
 </html>
