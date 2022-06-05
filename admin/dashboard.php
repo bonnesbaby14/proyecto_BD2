@@ -747,7 +747,7 @@ h1.title,
 					</div>
 					<div class="back">
 						<div class="inner">
-							<p>Se puede ver, crear, editar y eliminar asignaciones de alumnos.</p>
+							<p>Se puede ver, crear y eliminar asignaciones de alumnos.</p>
 						</div>
 					</div>
 				</div>
