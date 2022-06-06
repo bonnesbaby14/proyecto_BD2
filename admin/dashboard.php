@@ -595,6 +595,18 @@ h1.title,
           <li><a class="link_name" href="">Asignaciones Alumnos</a></li>
         </ul>
       </li>
+
+      <li>
+        <a href="./ticket/ticket.php">
+        <i class='bx bx-note'></i>
+          <span class="link_name">Ticket </span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="">Tickets</a></li>
+        </ul>
+      </li>
+
+     
       
      
     <div class="profile-details">

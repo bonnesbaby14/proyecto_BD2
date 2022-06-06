@@ -336,6 +336,13 @@ h1{
                             Materias
                         </span>
                     </a>
+                    <li class="has-subnav">
+                    <a href="./ticket.php">
+                        <i class="fa fa-ticket fa-2x"></i>
+                        <span class="nav-text">
+                            Tickets
+                        </span>
+                </a>
             </ul>
 
             <ul class="logout">
