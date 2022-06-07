@@ -179,6 +179,10 @@ if (!isset($_SESSION["ID"]) or $_SESSION["tipo"]!="admin") {
                     <div class="mb-3">
                         <label class="form-label">Registro: </label>
                         <input type="text" class="form-control" name="txtRegistro" autofocus required>
+                            </div>
+                            <div class="mb-3">
+                        <label class="form-label">Password: </label>
+                        <input type="password" class="form-control" name="txtPassword" autofocus required>
                     </div>
                     <div class="d-grid">
                         <input type="hidden" name="oculto" value="1">
