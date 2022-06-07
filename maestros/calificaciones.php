@@ -147,9 +147,9 @@ foreach ($materias as $materia) {
         echo "<tr>
             <td> " . $calificacion['matricula'] . " </td>
             <td> " . $calificacion['alumno'] . " </td>
-            <td>  <input type='number' name='primero-" . $calificacion['asigancion'] . "' id='' value='" . $calificacion['primero'] . "'>  </td>
-            <td>  <input type='number' name='segundo-" . $calificacion['asigancion'] . "' id='' value='" . $calificacion['segundo'] . "'>  </td>
-            <td>  <input type='number' name='tercero-" . $calificacion['asigancion'] . "' id='' value='" . $calificacion['tercero'] . "'>  </td>
+            <td>  <input style='width:90%' type='number' name='primero-" . $calificacion['asigancion'] . "' id='' value='" . $calificacion['primero'] . "'>  </td>
+            <td>  <input style='width:90%' type='number' name='segundo-" . $calificacion['asigancion'] . "' id='' value='" . $calificacion['segundo'] . "'>  </td>
+            <td>  <input style='width:90%' type='number' name='tercero-" . $calificacion['asigancion'] . "' id='' value='" . $calificacion['tercero'] . "'>  </td>
         
        
             
