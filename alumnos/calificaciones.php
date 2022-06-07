@@ -21,7 +21,7 @@ if (!isset($_SESSION["ID"]) or $_SESSION["tipo"]!="alumno") {
 
 <?php
 
-$query = "select m.nombre as nombre, a.primer_parcial, a.segundo_parcial, a.tercer_parcial, g.nombre as grupo, (a.primer_parcial + a.segundo_parcial +a.tercer_parcial)/3 as promedio from asignacion as a inner join grupo as g on g.id=a.idgrupo inner join materia as m on m.id=a.idmateria  where a.iduser=". $_SESSION['ID'];
+$query = "select m.nombre as nombre, a.primer_parcial, a.segundo_parcial, a.tercer_parcial, g.nombre as grupo, round((a.primer_parcial + a.segundo_parcial +a.tercer_parcial)/3,2) as promedio from asignacion as a inner join grupo as g on g.id=a.idgrupo inner join materia as m on m.id=a.idmateria  where a.iduser=". $_SESSION['ID'];
 // echo $connection;
 $calificaciones = mysqli_query($connection, $query);
 
