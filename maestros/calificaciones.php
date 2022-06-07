@@ -39,7 +39,7 @@ $query = "select g.nombre as nombre, g.id as id from asignacion as a inner join 
 $grupos = mysqli_query($connection, $query);
 
 
-$query = "select a.id as asigancion, u.registro as matricula ,concat(u.nombre,' ', u.apellidos) as alumno, a.primer_parcial as primero, a.segundo_parcial as segundo, a.tercer_parcial as tercero from asignacion as a inner join user as u on u.id=a.iduser where idgrupo='".$grupoid."' and a.idmateria='".$materiaid."' and u.tipo='alumno'" ;
+$query = "select a.id as asigancion, u.registro as matricula ,concat(u.nombre,' ', u.apellidos) as alumno, a.primer_parcial as primero, a.segundo_parcial as segundo, a.tercer_parcial as tercero from asignacion as a inner join user as u on u.id=a.iduser where idgrupo='".$grupoid."' and a.idmateria='".$materiaid."' and u.tipo='alumno' and u.activo=1" ;
 // echo $query;
 $calificaciones = mysqli_query($connection, $query);
 
