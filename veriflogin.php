@@ -1,6 +1,6 @@
 <?php
 include("./config/db.php");
-session_start();
+
 
 if (!$connection) {
     echo 'Error de conexion a la BD...' . mysqli_connect_error();
@@ -21,14 +21,14 @@ if (!$connection) {
 
 
         $row = mysqli_fetch_array($resultado);
-
+        session_start();
         $_SESSION['ID'] = $row['id'];
         $_SESSION['nombre'] = $row['nombre'];
         $_SESSION['apellido'] = $row['apellidos'];
         $_SESSION['registro'] = $row['registro'];
         $_SESSION['tipo'] = $row['tipo'];
         $_SESSION['grado'] = $row['grado'];
-
+       
         if ($row["tipo"] == "maestro") {
             header('Location: ./maestros/dashboard.php ');
         } else if ($row["tipo"] == "alumno") {

@@ -1,6 +1,7 @@
 <?php 
-if (!isset($_SESSION["ID"]) or $_SESSION["tipo"]=="admin") {
-    header('Location: login.php');}
+session_start();
+if (!isset($_SESSION["ID"]) or $_SESSION["tipo"]!="admin") {
+    header('Location: ./../../login2.php ');}
 
 
     include("../../config/db.php"); 
