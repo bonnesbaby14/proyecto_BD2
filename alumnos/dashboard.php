@@ -1,3 +1,9 @@
+<?php
+session_start(); 
+if (!isset($_SESSION["ID"]) or $_SESSION["tipo"]!="alumno") {
+    header('Location: ./../../login2.php ');}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
