@@ -18,7 +18,9 @@ if (!$connection) {
     $apellido = $_POST["txtApellidos"];
     $registro = $_POST["txtRegistro"];
     $tipo = "admin";
-    $password =  MD5($_POST["textPassword"]);
+    $password =  MD5($_POST["txtPassword"]);
+    // echo $password;
+    // exit();
     $activo = "1";
 
     $sql = "INSERT INTO user(`user`, `password`, `nombre`, `apellidos`, `registro`, `tipo`, `activo`) VALUES ('$nombre', '$password', '$nombre', '$apellido','$registro','$tipo', '$activo');";

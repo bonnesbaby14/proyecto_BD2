@@ -9,9 +9,10 @@ if (!$connection) {
 
 
     $cCorreo = $_POST['txtCorreo'];
-    $cPassw = $_POST['txtContra'];
-    // $cPassw = MD5($_POST['txtContra']); //Se aplica la función MD5 a la contraseña.
-
+    // $cPassw = $_POST['txtContra'];
+    $cPassw = MD5($_POST['txtContra']); //Se aplica la función MD5 a la contraseña.
+// echo $cPassw;
+// exit();
     $sql = "SELECT * FROM user WHERE user='$cCorreo' AND password='$cPassw'";
 
     $resultado = mysqli_query($connection, $sql);
